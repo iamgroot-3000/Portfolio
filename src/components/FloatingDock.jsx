@@ -4,7 +4,6 @@ import { FaGithub, FaFileAlt, FaEnvelope, FaInstagram } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
 const FloatingDock = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
 
   const dockItems = [
@@ -88,17 +87,15 @@ const FloatingDock = () => {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <div className="flex items-center gap-4 p-4">
-          {dockItems.map((item, index) => (
+          {dockItems.map((item) => (
             <motion.div
               key={item.id}
               className="relative"
               onMouseEnter={() => {
                 setHoveredItem(item.id);
-                setIsExpanded(true);
               }}
               onMouseLeave={() => {
                 setHoveredItem(null);
-                setIsExpanded(false);
               }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}

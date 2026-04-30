@@ -4,7 +4,7 @@ import { HiLink } from 'react-icons/hi';
 import { HiDownload } from 'react-icons/hi';
 import { FaGithub } from 'react-icons/fa';
 
-const AnimatedProjectCard = ({ project, className, size = 'medium', minHeight = 'min-h-[220px]', index, hoveredIndex, onHover, cursorPosition, onClick }) => {
+const AnimatedProjectCard = ({ project, className, size = 'medium', minHeight = 'min-h-[220px]', index, hoveredIndex, onHover, onClick }) => {
   const [localCursor, setLocalCursor] = useState({ x: 0, y: 0 });
   
   const getSizeClasses = () => {

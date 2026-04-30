@@ -15,14 +15,11 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const shouldShow = window.scrollY > 200;
-      if (shouldShow !== showFloatingToggle) {
-        setShowFloatingToggle(shouldShow);
-      }
+      setShowFloatingToggle(window.scrollY > 200);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [showFloatingToggle]);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">

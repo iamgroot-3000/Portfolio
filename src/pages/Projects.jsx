@@ -278,7 +278,7 @@ const Projects = () => {
       <div className="grid md:hidden grid-cols-1 gap-1">
         {projects.map((project, index) => (
           <AnimatedProjectCard
-            key={index}
+            key={project.title}
             project={project}
             size="medium"
             minHeight="min-h-[220px]"
