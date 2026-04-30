@@ -25,4 +25,11 @@ dist-ssr
 
 
 #Ignore vscode AI rules
-.github/copilot-instructions.md
+.github\copilot-instructions.md
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
