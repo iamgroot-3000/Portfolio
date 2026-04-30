@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export function BackgroundLines({ children, className = "" }) {
+export function BackgroundLines({ children, className = "", id }) {
   const pathVariants = {
     initial: { strokeDashoffset: 800, strokeDasharray: "50 800" },
     animate: {
@@ -67,15 +67,15 @@ export function BackgroundLines({ children, className = "" }) {
     "#604483",
   ];
 
-  // Add a secure random integer generator
-  function secureRandomInt(max) {
-    const array = new Uint32Array(1);
-    window.crypto.getRandomValues(array);
-    return array[0] % max;
-  }
+  // Pre-compute stable random delays so they don't change on re-render
+  const firstPathDelays = paths.map(() => Math.floor(Math.random() * 3));
+  const firstPathRepeatDelays = paths.map(() => Math.floor(Math.random() * 2 + 1));
+  const secondPathDelays = paths.map(() => Math.floor(Math.random() * 3 + 1));
+  const secondPathRepeatDelays = paths.map(() => Math.floor(Math.random() * 2 + 1));
 
   return (
     <div
+      id={id}
       className={`relative overflow-hidden pt-24 ${className}`}
       style={{
         display: "block",
@@ -145,8 +145,8 @@ export function BackgroundLines({ children, className = "" }) {
                 ease: "linear",
                 repeat: Infinity,
                 repeatType: "loop",
-                delay: secureRandomInt(3),
-                repeatDelay: Math.floor(Math.random() * 2 + 1),
+                delay: firstPathDelays[idx],
+                repeatDelay: firstPathRepeatDelays[idx],
               }}
               key={`path-first-${idx}`}
             />
@@ -166,8 +166,8 @@ export function BackgroundLines({ children, className = "" }) {
                 ease: "linear",
                 repeat: Infinity,
                 repeatType: "loop",
-                delay: Math.floor(Math.random() * 3 + 1),
-                repeatDelay: Math.floor(Math.random() * 2 + 1),
+                delay: secondPathDelays[idx],
+                repeatDelay: secondPathRepeatDelays[idx],
               }}
               key={`path-second-${idx}`}
             />

@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const LinkPreview = ({ 
   children, 
-  url, 
   image, 
   className = "", 
   previewClassName = "" 
@@ -27,7 +26,6 @@ const LinkPreview = ({
 
   useEffect(() => {
     if (showPreview && linkRef.current) {
-      const rect = linkRef.current.getBoundingClientRect();
       const windowWidth = window.innerWidth;
       const windowHeight = window.innerHeight;
       
